@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"RelationshipProposal","type":"object","properties":{"relationship_type":{"type":"string"},"source_entity":{"type":"string"},"target_entity":{"type":"string"},"attributes":{"type":"object"}},"required":["relationship_type","source_entity","target_entity"]}

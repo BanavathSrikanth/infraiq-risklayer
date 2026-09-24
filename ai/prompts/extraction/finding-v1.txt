@@ -1,0 +1,1 @@
+Extract candidate entities and findings from the supplied source. Return proposals only. Preserve source references and uncertainty; never claim that a proposal is an authoritative record.

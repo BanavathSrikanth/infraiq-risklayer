@@ -1,0 +1,8 @@
+version: "2.0"
+
+weights:
+  proximity: 0.25
+  density: 0.20
+  clearance: 0.30
+  overlap: 0.15
+  encroach: 0.10

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RiskInputProposal",
+  "type": "object",
+  "properties": {
+    "asset_id": {"type": "string"},
+    "finding_type": {"type": "string"},
+    "severity": {"type": "number", "minimum": 0, "maximum": 100},
+    "source_text": {"type": "string"}
+  },
+  "required": ["source_text"]
+}

@@ -1,0 +1,5 @@
+fastapi>=0.115
+pydantic>=2.7
+python-multipart>=0.0.9
+uvicorn>=0.30
+azure-storage-blob>=12.24,<13

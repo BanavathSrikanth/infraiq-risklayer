@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"ComponentProposal","type":"object","properties":{"component_type":{"type":"string"},"attributes":{"type":"object"}},"required":["component_type","attributes"]}

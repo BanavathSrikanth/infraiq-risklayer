@@ -1,0 +1,1 @@
+Propose relationships among the supplied entities. Return relationship proposals only with evidence references and confidence. Do not persist or mutate business records.

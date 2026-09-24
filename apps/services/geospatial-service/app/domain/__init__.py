@@ -1,0 +1,1 @@
+"""Geospatial domain objects."""

@@ -1,0 +1,1 @@
+Propose an operational recommendation from the supplied evidence. Include rationale, priority, confidence, and sources. A human or application/domain workflow must approve it.

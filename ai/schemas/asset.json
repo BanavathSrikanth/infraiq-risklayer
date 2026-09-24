@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"AssetProposal","type":"object","properties":{"asset_id":{"type":"string"},"asset_type":{"type":"string"},"attributes":{"type":"object"}},"required":["asset_type","attributes"]}

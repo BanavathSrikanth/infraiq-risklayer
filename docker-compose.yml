@@ -1,0 +1,31 @@
+services:
+  risk-api:
+    build:
+      context: ./apps/services/risk-service
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./apps/services/risk-service/.env
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  risk-bff:
+    build:
+      context: ./apps/services/risk-bff
+    ports:
+      - "5000:8080"
+    environment:
+      - RiskServiceUrl=http://risk-api:8000
+    depends_on:
+      - risk-api

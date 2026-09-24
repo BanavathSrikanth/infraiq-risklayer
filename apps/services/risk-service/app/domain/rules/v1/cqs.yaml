@@ -1,0 +1,13 @@
+version: "2.0"
+
+normalization:
+  population_density_1km_max: 10000
+  critical_facilities_2km_max: 20
+  customers_on_circuit_segment_max: 10000
+  road_density_max: 100
+
+weights:
+  population: 0.35
+  critical: 0.25
+  customer: 0.25
+  egress: 0.15

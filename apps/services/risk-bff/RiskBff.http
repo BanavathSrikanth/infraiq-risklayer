@@ -1,0 +1,6 @@
+@RiskBff_HostAddress = http://localhost:5085
+
+GET {{RiskBff_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

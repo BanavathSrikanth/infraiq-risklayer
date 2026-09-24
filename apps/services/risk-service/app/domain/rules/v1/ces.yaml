@@ -1,0 +1,30 @@
+version: "2.0"
+
+hftd_factors:
+  tier_3: 1.0
+  tier_2: 0.7
+  tier_1: 0.5
+  none: 0.1
+
+fhsz_factors:
+  very_high: 1.0
+  high: 0.7
+  moderate: 0.4
+  none: 0.1
+
+fuel:
+  minimum_class: 1
+  maximum_class: 5
+
+slope:
+  normalization_degrees: 45.0
+
+historical_wind:
+  normalization_mps: 30.0
+
+weights:
+  hftd: 0.35
+  fhsz: 0.20
+  fuel: 0.20
+  slope: 0.15
+  wind: 0.10

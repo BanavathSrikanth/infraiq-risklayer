@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"FindingProposal","type":"object","properties":{"finding_type":{"type":"string"},"severity":{"type":"number","minimum":0,"maximum":100},"attributes":{"type":"object"}},"required":["finding_type","attributes"]}

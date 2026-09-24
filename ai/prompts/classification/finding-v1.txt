@@ -1,0 +1,1 @@
+Classify the supplied candidate finding. Return a proposed classification with confidence and source references. Application/domain rules remain authoritative.
