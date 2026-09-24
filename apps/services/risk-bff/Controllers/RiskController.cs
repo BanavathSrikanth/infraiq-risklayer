@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using RiskBff.Clients;
 using RiskBff.Models;
@@ -21,5 +22,20 @@ public class RiskController(IRiskServiceClient riskServiceClient) : ControllerBa
         }
 
         return Ok(response);
+    }
+
+    [HttpPost("calculate")]
+    public async Task<IActionResult> CalculateRisk([FromBody] JsonElement request, CancellationToken cancellationToken)
+    {
+        // Extract tenant_id from claims in a real scenario
+        // if (request.TryGetProperty("tenant_id", out var tenantId)) { ... }
+
+        var response = await riskServiceClient.CalculateRiskAsync(request, cancellationToken);
+        if (response == null)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Failed to parse response from downstream service.");
+        }
+
+        return Ok(response.Value);
     }
 }
