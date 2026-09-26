@@ -8,7 +8,7 @@ builder.Services.AddControllers();
 
 // Configure OpenAPI/Swagger
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOpenApi(); // .NET 8+ default OpenAPI
+builder.Services.AddSwaggerGen();
 
 // Configure typed HttpClient for the Python Risk Service
 var riskServiceUrl = builder.Configuration.GetValue<string>("RiskServiceUrl") ?? "http://localhost:8000";
@@ -30,7 +30,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
 }
 
