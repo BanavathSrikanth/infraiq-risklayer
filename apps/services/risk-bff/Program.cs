@@ -1,10 +1,30 @@
 using RiskBff.Clients;
+using RiskBff.Services;
 using Microsoft.Extensions.Http.Resilience;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+    });
+
+// Configure CORS for React UI
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.SetIsOriginAllowed(_ => true)
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials();
+    });
+});
+
+// Register services
+builder.Services.AddScoped<IBlobPreviewService, BlobPreviewService>();
 
 // Configure OpenAPI/Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -34,6 +54,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
 }
+
+app.UseCors("AllowFrontend");
 
 app.UseHttpsRedirection();
 

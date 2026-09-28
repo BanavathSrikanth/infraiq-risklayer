@@ -1,6 +1,21 @@
 @RiskBff_HostAddress = http://localhost:5085
 
-GET {{RiskBff_HostAddress}}/weatherforecast/
+### 1. Ingestion Data Preview (Default Page 1, Page Size 10)
+GET {{RiskBff_HostAddress}}/api/v1/ingestion/preview
 Accept: application/json
 
-###
+### 2. Ingestion Data Preview with Pagination and Search
+GET {{RiskBff_HostAddress}}/api/v1/ingestion/preview?page=1&pageSize=10&search=Oak
+Accept: application/json
+
+### 3. Ingestion Data Preview Filter by Status
+GET {{RiskBff_HostAddress}}/api/v1/ingestion/preview?status=Needs%20Review
+Accept: application/json
+
+### 4. Ingestion Data Preview Filter by Validation Status (Errors)
+GET {{RiskBff_HostAddress}}/api/v1/ingestion/preview?validationStatus=Error
+Accept: application/json
+
+### 5. Ingestion Data Preview for a Specific Upload / Blob Name
+GET {{RiskBff_HostAddress}}/api/v1/ingestion/uploads/Utility_Poles_Import_Jan2026.csv/preview?page=1&pageSize=10
+Accept: application/json

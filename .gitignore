@@ -14,3 +14,14 @@ dist/
 build/
 *.egg-info/
 .data/
+
+# .NET / C#
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.db
+*.sqlite
+*.sqlite3
