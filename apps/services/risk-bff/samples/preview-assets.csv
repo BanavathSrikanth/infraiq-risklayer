@@ -1,0 +1,6 @@
+Pole ID,Source Record ID,Source,Latitude,Longitude,Address / Location,Material,Class,Height (ft),Install Year,Owner,Condition,Inspection Date
+PL-2001,UT-90001,Excel,34.0523,-118.2437,1234 Oak St LA,Wood,3,35,2020,UtilityCo,Good,2026-01-12
+PL-2002,UT-90002,GIS,34.0611,-118.2562,5678 Pine Ave LA,Wood,4,40,2019,UtilityCo,Unknown,01/14/2026
+PL-2003,EXT-90003,Third Party,95.1234,-118.2410,9012 Maple Rd,Concrete,2,38,2021,City Utility,Good,2025-12-28
+PL-2004,UT-90004,Excel,34.0821,-118.2410,2468 Cedar St,Steel,3,45,2018,UtilityCo,Good,2026-01-10
+PL-2004,UT-90005,Excel,34.0821,-118.2410,2468 Cedar St,Steel,3,45,2018,UtilityCo,Good,2026-01-10

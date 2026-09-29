@@ -1,10 +1,14 @@
 using RiskBff.Clients;
+using RiskBff.Repositories;
+using RiskBff.Services;
 using Microsoft.Extensions.Http.Resilience;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddScoped<ImportPreviewRepository>();
+builder.Services.AddSingleton<CsvImportPreviewReader>();
 
 // Configure OpenAPI/Swagger
 builder.Services.AddEndpointsApiExplorer();
