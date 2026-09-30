@@ -28,6 +28,7 @@ public sealed class ImportPreviewController(
         [FromQuery] int page = 1,
         [FromQuery(Name = "page_size")] int pageSize = 10,
         [FromQuery] string? search = null,
+        [FromQuery(Name = "ingestion_status")] string? ingestionStatus = null,
         CancellationToken cancellationToken = default)
     {
         if (!Guid.TryParseExact(importId, "N", out _))
@@ -77,7 +78,13 @@ public sealed class ImportPreviewController(
 
         try
         {
-            var preview = previewReader.ReadPage(storedPath, page, pageSize, search, cancellationToken);
+            var preview = previewReader.ReadPage(
+                storedPath,
+                page,
+                pageSize,
+                search,
+                ingestionStatus,
+                cancellationToken);
             return Ok(new ImportPreviewResponse(
                 upload.ImportId,
                 upload.TenantId,

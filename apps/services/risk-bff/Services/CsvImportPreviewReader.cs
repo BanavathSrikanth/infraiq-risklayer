@@ -16,6 +16,7 @@ public sealed class CsvImportPreviewReader
         int page,
         int pageSize,
         string? search,
+        string? ingestionStatus,
         CancellationToken cancellationToken)
     {
         using var parser = new TextFieldParser(path)
@@ -39,6 +40,14 @@ public sealed class CsvImportPreviewReader
         var totalMatchingRecords = 0;
         var firstRecordIndex = (long)(page - 1) * pageSize;
         var searchText = search?.Trim();
+        var ingestionStatusText = ingestionStatus?.Trim();
+        var ingestionStatusIndex = string.IsNullOrEmpty(ingestionStatusText)
+            ? -1
+            : columns.FindIndex(column => NormalizeHeader(column) == "ingestionstatus");
+        if (!string.IsNullOrEmpty(ingestionStatusText) && ingestionStatusIndex < 0)
+        {
+            throw new InvalidDataException("The CSV does not contain an Ingestion Status column.");
+        }
 
         while (!parser.EndOfData)
         {
@@ -64,6 +73,13 @@ public sealed class CsvImportPreviewReader
                 continue;
             }
 
+            if (!string.IsNullOrEmpty(ingestionStatusText) &&
+                (fields.Length <= ingestionStatusIndex ||
+                 !string.Equals(fields[ingestionStatusIndex]?.Trim(), ingestionStatusText, StringComparison.OrdinalIgnoreCase)))
+            {
+                continue;
+            }
+
             if (totalMatchingRecords >= firstRecordIndex && rows.Count < pageSize)
             {
                 rows.Add(new ImportPreviewRow(totalRecords, fields));
@@ -81,4 +97,7 @@ public sealed class CsvImportPreviewReader
 
         return new CsvImportPreviewPage(columns, paddedRows, totalRecords, totalMatchingRecords);
     }
+
+    private static string NormalizeHeader(string header) =>
+        new(header.Where(char.IsLetterOrDigit).Select(char.ToLowerInvariant).ToArray());
 }
